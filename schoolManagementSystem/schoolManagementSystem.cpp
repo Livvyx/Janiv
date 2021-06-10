@@ -8,11 +8,12 @@
 
 using namespace std;
 
+//Written by janelle
 struct Account {
 	string username;
 	string password;
 };
-
+//Written by janelle
 struct Student {
 	int id;
 	string firstName;
@@ -24,14 +25,41 @@ struct Student {
 	string parentGender;
 	Account accountDetails;
 };
-
+//Written by janelle
 struct Admin {
 	string firstName;
 	string lastName;
 	string email;
 	Account accountDetails;
 };
-
+//written by Liv :)
+struct Teacher {
+	string firstName;
+	string middleName;
+	string lastName;
+	string gender;
+	int dob;
+	string email;
+	int contactNum;
+	int classNum;
+	int teachedYear;
+	string username;
+	string password;
+};
+//written by Liv :)
+struct Parent {
+	string firstName;
+	string middleName;
+	string lastName;
+	string gender;
+	string email;
+	int contactNum;
+	string childName;
+	int studentID;
+	int emergencyContact;
+	string username;
+	string password;
+};
 //Written By Liv :)
 void starLine(int numOfStars) { // Output for Star Lines
 	int i;
