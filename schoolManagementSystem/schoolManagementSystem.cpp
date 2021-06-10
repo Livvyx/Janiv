@@ -35,10 +35,8 @@ struct Admin {
 //written by Liv :)
 struct Teacher {
 	string firstName;
-	string middleName;
 	string lastName;
 	string gender;
-	int dob;
 	string email;
 	int contactNum;
 	int classNum;
@@ -49,7 +47,6 @@ struct Teacher {
 //written by Liv :)
 struct Parent {
 	string firstName;
-	string middleName;
 	string lastName;
 	string gender;
 	string email;
@@ -63,10 +60,10 @@ struct Parent {
 //Written By Liv :)
 void starLine(int numOfStars) { // Output for Star Lines
 	int i;
-		for (i = 0; i < numOfStars; i++) {
-			cout << "*";
-		}
-		cout << endl;
+	for (i = 0; i < numOfStars; i++) {
+		cout << "*";
+	}
+	cout << endl;
 }
 
 //Written By Livvy :)
@@ -76,7 +73,7 @@ void schoolTitle() {
 }
 
 //Written By Livvy
-void introScreen(){
+void introScreen() {
 	//Contact Output
 	cout << "<-Contact->" << endl;
 	cout << "Phone: 08-947-3759" << endl;
@@ -127,7 +124,7 @@ void adminSignUp(struct Admin* a) {
 	cout << "Enter Passsword : ";
 	cin >> a->accountDetails.password;
 
-	adminFile << a->firstName << "," << a->lastName << "," << a->email << "," << a->accountDetails.username  << "," << a->accountDetails.password; //writing to file
+	adminFile << a->firstName << "," << a->lastName << "," << a->email << "," << a->accountDetails.username << "," << a->accountDetails.password; //writing to file
 
 	adminFile.close();//close admin file
 }
@@ -201,14 +198,114 @@ void signUpMenu(struct Admin* a) {
 }
 //Janelle's code end
 
-void TeacherSignUp() {
-	schoolTitle();
-	/*cout << "Enter First Name : ";
-	cin >>  
-	cout << "Enter Username : ";*/
+//livs code
+void TeacherSignUp(struct Teacher* t) {/*Teacher Sign up screen where she/he is able to put their
+									  information into the system to be validated by the school*/
 
+	schoolTitle();
+
+	cout << "\n\t\t\t<-Teacher Signup->" << endl;//Title output
+
+
+	//Entering Signup information for output
+	cout << "\nPlease Enter Your FirstName: ";
+	cin >> t->firstName;
+	cout << "\nPlease Enter Your LastName: ";
+	cin >> t->lastName;
+	cout << "\nPlease Enter Your Gender: ";
+	cin >> t->gender;
+	cout << "\nPlease Enter Your Email: ";
+	cin >> t->email;
+	cout << "\nPlease Enter Your Contact Number: ";
+	cin >> t->contactNum;
+	cout << "\nPlease Enter Your ClassRoom Number: ";
+	cin >> t->classNum;
+	cout << "\nPlease Enter The Year Group Your Teaching: ";
+	cin >> t->teachedYear;
+	cout << "\nPlease Enter A Username: ";
+	cin >> t->username;
+	cout << "\nPlease Enter A Password: ";
+	cin >> t->password;
+
+	cout << "\n\t\t\t1. Confirm SignUp" << endl;//Bottom Footer output
+	starLine(66);
 }
 
+//livs code
+void ParentSignUp(struct Parent* p) { /*Parents Sign up screen where she/he is able to put their
+									  information into the system to be validated by the school*/
+
+	schoolTitle();
+
+	cout << "\n\t\t\t<-Parents Signup->" << endl;//Title output
+
+	//Entering Signup information for output
+	cout << "\nPlease Enter Your FirstName: ";
+	cin >> p->firstName;
+	cout << "\nPlease Enter Your LastName: ";
+	cin >> p->lastName;
+	cout << "\nPlease Enter Your Gender: ";
+	cin >> p->gender;
+	cout << "\nPlease Enter Your Email: ";
+	cin >> p->email;
+	cout << "\nPlease Enter Your Contact Number: ";
+	cin >> p->contactNum;
+	cout << "\nPlease Enter Your Childs Student ID: ";
+	cin >> p->studentID;
+	cout << "\nPlease Enter Your Emergency Contact: ";
+	cin >> p->emergencyContact;
+	cout << "\nPlease Enter A Username: ";
+	cin >> p->username;
+	cout << "\nPlease Enter A Password: ";
+	cin >> p->password;
+
+	cout << "\n\t\t\t1. Confirm SignUp" << endl;//Bottom Footer output
+	starLine(66);
+}
+
+//Livs Code 
+void ParentsAccount(Parent* p) { /*Parents Account, So Where she/he is able to find information about school or her child.*/
+	schoolTitle();
+
+	cout << "\n\t\t\t<-" << p->username << "->" << endl;//Title output
+
+	cout << "\n\n\n<-1. View Your Childs Reports->" << endl;
+	cout << "\n<-2.View Exclusive School Notices->" << endl;
+	cout << "\n<-3. Settings->" << endl;
+
+	cout << "\n\t\t\t\t\t\t\t\t1.End" << endl;
+	starLine(66);
+}
+
+//Livs Code
+void parentreportScreen(Parent* pr, Parent* p) { /*Parents Report Screen is so the parent is able to see the current reports
+									or notes on their child academically and behaviour wise */
+	schoolTitle();
+
+	cout << "\t\t\t<-" << p->username << "->" << endl;//Title output
+
+	cout << "\nJacks Current Report"; //Will replace with the s->studentusername for the name
+	cout << "\n<-2. View Exclusive School Notices->" << endl;
+	cout << "\n<-3. Settings->" << endl;
+}
+
+//Livs Code 
+void parentNotices(Parent* pn, Parent* p) {
+
+	schoolTitle();
+	cout << "\t\t\t<-" << p->username << "->" << endl;//parent name output beside school name
+	cout << "\nSchool Notices: Monday" << endl;
+	cout << "\n\n8.30am: Show And Tell" << endl;
+	cout << "\nMake Sure Your Child Has Brought Something Awesome To Share! :)" << endl;
+	cout << "\n12.30: School Lunch" << endl;
+	cout << "\nShared Lunch! Bring Something Scrumtious! :P" << endl;
+	cout << "\n1pm: Sports" << endl;
+	starLine(66);
+	cout << "\n\n\n<-1. View Your Childs Reports->" << endl;
+	cout << "\n<-3. Settings->" << endl;
+
+
+}
 int main()
 {
 	//Janelle's Code start
@@ -217,6 +314,8 @@ int main()
 	struct Admin admn;
 	struct Admin* adminPointer = &admn;
 	int menuOption = 0;
+	struct Teacher t;
+	struct Teacher* teacherptr = &t;
 
 	schoolTitle();//calling the school name
 	introScreen();
@@ -227,7 +326,7 @@ int main()
 		cout << "\nEnter number for chosen option : ";
 		cin >> menuOption;
 		cout << "\n";
-		
+
 		switch (menuOption) {
 		case 1:
 			//signIn();
@@ -237,9 +336,12 @@ int main()
 			signUpMenu(adminPointer);
 			break;
 		case 3:
+
 			//terminate program
 			return 0;
 		}
 	}
 	//Janelle's Code end
+
+	/*TeacherSignUp(teacherptr);*/
 }
